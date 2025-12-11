@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String
 from .session import Base
 
 class Contact(Base): #Creates the db table through  Base inheritance
-    __tablename__ = "contacts" #Sets the SQL table name
+    __tablename__ = "contacts" #Sets the SQL table name as contacts
 
     #Sets table columns with Column()
     id = Column(Integer, primary_key=True, index=True) #Primary_key=True to uniquely identify each row 

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2> My contacts </h2>
+
+{% if contacts %} 
+    <ul>
+        {% for contact in contacts%}
+            <li>
+                <strong> {{ contact.name }} </strong><br>
+                Met on: {{ contact.date_met }} <br>
+                Event: {{ contact.event}} <br>
+                Interests: {{ contact.interests }}
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> No contacts found </p>
+{% endif %}
+{% endblock %}

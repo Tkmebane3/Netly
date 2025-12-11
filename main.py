@@ -3,14 +3,12 @@ from fastapi.responses import HTMLResponse #Output HTML instead of default JSON
 from fastapi.templating import Jinja2Templates
 from fastapi import Request #Needed for Jinja2 templates
 from fastapi import Depends
-from fastapi import form
+from fastapi import Form
 from database.session import Base, engine
 from database.session import get_db
 from database import models
 from sqlalchemy.orm import Session
 from fastapi.responses import RedirectResponse
-
-
 
 templates = Jinja2Templates(directory="templates") #Refers to template folder to connect HTML files
 
@@ -36,15 +34,19 @@ async def add_contact(
     date_met: str = Form(...), #Form(...) from FastAPI enforces requirement
     event: str = Form(...),
     interests: str = Form(...),
-    db: Session = Depends(get_db) 
+    db: Session = Depends(get_db)  #parameter to call get_db() so db = sessionlocal can be used
 ): 
-    #declaring variable as Contact from the models py file 
-    new_contact = models.Contact(
-        name=name,
-        date_met=date_met,
-        event=event,
-        interests=interests
-    )
-    db.add(new_contact) #Prepare a new row in Contact table
+    #Contact from the models py file 
+    new_contact = models.Contact(name=name, date_met=date_met, event=event, interests=interests)
+
+    db.add(new_contact) #Prepare a new row in Contact table w/ the Contact class stored as new_contact
     db.commit() #Saves the new row
     return RedirectResponse(url="/contacts", status_code=303) #Redirect from POST to GET
+
+@app.get("/contacts", response_class=HTMLResponse)
+async def view_contacts(request:Request, db: Session = Depends(get_db)):
+    contacts = db.query(models.Contact).all() #SQL language to select * from the contacts table
+
+    #passes the SQL querey ^^ into the template "contacts.html" for display
+    return templates.TemplateResponse("contacts.html", {"request": request, "contacts":contacts}) #"contacts" is for the html to recognize, :contacts provides the info from the querey 
+

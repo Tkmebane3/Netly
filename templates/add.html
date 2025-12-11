@@ -1,0 +1,19 @@
+<!-- Use Jinja to inherit from base-->
+{% extends "base.html" %}
+<!-- To set title separate from the base html title -->
+{% block title %} Add Contact {% endblock %}
+
+{% block content %} <!-- Matches the block content from base.html -->
+<h2>Add a new contact </h2>
+<form method="post" action ="/add">
+    <label for="name"> Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="date_met">Date Met:</label>
+    <input type="date" id="date_met" name="date_met" required>
+    <label for="event"> Event:</label>
+    <input type="text" id="event" name="event" required>
+    <label for="interests"> Interests:</label>
+    <input type="text" id="interests" name="interests" required>
+    <button type="submit">Save Contact</button>
+</form>
+{% endblock %}
