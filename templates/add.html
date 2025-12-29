@@ -1,19 +1,31 @@
 <!-- Use Jinja to inherit from base-->
 {% extends "base.html" %}
 <!-- To set title separate from the base html title -->
-{% block title %} Add Contact {% endblock %}
+{% block title %} Add Connection {% endblock %}
 
-{% block content %} <!-- Matches the block content from base.html -->
-<h2>Add a new contact </h2>
-<form method="post" action ="/add">
-    <label for="name"> Name:</label>
-    <input type="text" id="name" name="name" required>
-    <label for="date_met">Date Met:</label>
-    <input type="date" id="date_met" name="date_met" required>
-    <label for="event"> Event:</label>
-    <input type="text" id="event" name="event" required>
-    <label for="interests"> Interests:</label>
-    <input type="text" id="interests" name="interests" required>
-    <button type="submit">Save Contact</button>
+{% block content %} <!-- Overrides the content block from base.html -->
+<h2>Add a New Connection </h2>
+<form method="post" action ="/add" class="addForm">
+    <div class="formGroup">
+        <label for="name"> Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="formGroup">
+        <label for="date_met">Date Met:</label>
+        <input type="date" id="date_met" name="date_met" required>
+    </div>
+    <div class="formGroup">
+        <label for="event"> Event:</label>
+        <input type="text" id="event" name="event" required>
+    </div>
+    <div class="formGroup">
+        <label for="interests"> Interests:</label>
+        <input type="text" id="interests" name="interests" required>
+    </div>
+    <div class="formGroup">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+    </div>
+    <button type="submit" class="btnCircle">Save Connection</button>
 </form>
 {% endblock %}

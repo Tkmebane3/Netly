@@ -1,0 +1,91 @@
+body { /* no dot or # means a tag */
+    font-family: Arial, sans-serif; /* prioritizes Arial, but if that fails resort to sans-serif */
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container { /* a dot means class */ 
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar a { /* for the anchor tags inside navbar class */
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: 2563eb;
+}
+
+.navbar a:hover { /* triggers with hovering over anchor tag in navbar*/
+    text-decoration: underline;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btnCircle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 36px;
+    margin-right: 20px;
+    border-radius: 999px;
+    background-color: #2563eb;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btnCircle:hover {
+    background-color: #1e4fd6;
+    transform: translateY(-2px);
+}
+
+.addForm {
+    margin-top: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.formGroup label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formGroup input {
+    padding: 8px;
+    font-size: 14px;
+}
+
+.connectTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.connectTable th, .connectTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.connectTable th {
+    font-weight: bold;
+}

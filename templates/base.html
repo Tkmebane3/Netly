@@ -2,12 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href ="/static/Styles.css">  <!-- references static directory and rel set to stylesheet for HTML to know the relationship -->
     <title>Netly</title>
 </head>
 <body>
-    <h1> My Netly</h1>
-    <hr>
-    {% block content %} <!-- placeholder for pages that inherit base -->
-    {% endblock %}
+    <div class="container">
+         <nav class="navbar"> <!-- adding in a nav bar, set class to "navbar"-->
+            <a href="/">Home</a>
+            <a href="/add">Add Connection</a>
+            <a href="/contacts">View Connections</a>
+        </nav>
+        <h1> Welcome to Netly </h1>
+        <hr>
+        {% block content %} <!-- placeholder for pages that inherit base -->
+        {% endblock %}
+    </div>
 </body>
 </html>

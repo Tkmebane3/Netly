@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Welcome to Netly</h1>
+    <h1>My Netly</h1>
 
-    <p>This is your homepage. Use the link below to add contacts.</p>
+    <p>This is your homepage. Use the links below to add connections or view your connections.</p>
+    <div class="actionButtons">
+    <a href="/add" class="btnCircle">Add New Connection</a>
 
-    <a href="/add">Add New Contact</a><br>
-
-    <a href="/contacts">View Contacts</a>
-
+    <a href="/contacts" class="btnCircle">View Connections</a>
+    </div>
 {% endblock %}

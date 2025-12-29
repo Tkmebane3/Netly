@@ -1,21 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2> My contacts </h2>
+<h2> My Connections </h2>
 
-{% if contacts %} 
-    <ul>
-        {% for contact in contacts%}
-            <li>
-                <strong> {{ contact.name }} </strong><br>
-                Met on: {{ contact.date_met }} <br>
-                Event: {{ contact.event}} <br>
-                Interests: {{ contact.interests }}
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
+{% if connections %} 
+<table class="connectTable">
+    <thead> 
+        <tr> <!-- Table header row names inside thead -->
+            <th><strong>Name</strong></th>
+            <th>Met on</th>
+            <th>Event</th>
+            <th>Interests</th>
+            <th>Email
+            <th>Actions</th>
+            </th>
+        </tr>
+    </thead>
+        <tbody> <!-- for the rows of data -->
+            {% for connection in connections %} <!-- for loop to go through each connection in db -->
+            <tr> <!-- row for each connection -->
+                <td>{{ connection.name }}</td> <!-- each td pulls matching column from db -->
+                <td>{{ connection.date_met }}</td>
+                <td>{{ connection.event }}</td>
+                <td>{{ connection.interests }}</td>
+                <td>{{ connection.email }}</td>
+                <td>
+                    <form method="post" action="/delete" style="display: inline;">
+                        <input type="hidden" name="contact_id" value="{{ connection.id }}">
+                        <button type="submit" class="btnCircle">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
 {% else %}
-    <p> No contacts found </p>
+    <p> No connections found </p>
 {% endif %}
 {% endblock %}
