@@ -1,11 +1,11 @@
-body { /* no dot or # means a tag */
-    font-family: Arial, sans-serif; /* prioritizes Arial, but if that fails resort to sans-serif */
+body { /* no . or # directs to HTML tag */
+    font-family: Arial, sans-serif; /* prioritizes Arial */
     background-color: #f0f4f8;
     margin: 0;
     padding: 0;
 }
 
-.container { /* a dot means class */ 
+.container { /* dot means class */ 
     max-width: 800px;
     margin: 40px auto;
     background-color: white;
@@ -36,7 +36,6 @@ body { /* no dot or # means a tag */
 }
 
 .btnCircle {
-    display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 14px 36px;

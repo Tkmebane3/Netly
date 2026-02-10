@@ -7,7 +7,7 @@ DATABASE_URL = "sqlite:///./network.db"
 #Create_engine is the bridge that connects the database(database_url)
 engine = create_engine(
     DATABASE_URL, 
-    connect_args={"check_same_thread": False} #Allows FAST API's use of multiple threads/async
+    connect_args={"check_same_thread": False} #Will allow FAST API's use of multiple threads/async
 )
 
 #When SessionLocal is called, a session connects to database
@@ -17,10 +17,10 @@ SessionLocal = sessionmaker(
     bind=engine #attaches the engine from above when SessionLocal() is called
 )
 
-#Creates a Base class for all SQLAlchemy models to inherit from. Models will be recognized as tables.
+#Models will inherit from declarative_base
 Base = declarative_base()
 
-def get_db(): #Acts as the gateway between FastAPI and database
+def get_db(): #
     db = SessionLocal()
     try:
         yield db
